@@ -1,0 +1,15 @@
+<h1>Welcome, {{ user.username }}</h1>
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+
+
+<h2>Your tasks:</h2>
+<ul>
+{% for task in tasks %}
+    <li>{{ task.title }} - {{ task.description }}</li>
+{% empty %}
+    <li>No tasks yet.</li>
+{% endfor %}
+</ul>
