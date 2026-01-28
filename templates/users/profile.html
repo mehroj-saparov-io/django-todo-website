@@ -4,11 +4,15 @@
     <button type="submit">Logout</button>
 </form>
 
-
 <h2>Your tasks:</h2>
+<a href="{% url 'task_create' %}">Create New Task</a>
 <ul>
 {% for task in tasks %}
-    <li>{{ task.title }} - {{ task.description }}</li>
+    <li>
+        {{ task.title }} - {{ task.description }}
+        <a href="{% url 'task_update' task.pk %}">Edit</a>
+        <a href="{% url 'task_delete' task.pk %}">Delete</a>
+    </li>
 {% empty %}
     <li>No tasks yet.</li>
 {% endfor %}
